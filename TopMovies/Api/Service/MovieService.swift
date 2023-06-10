@@ -15,8 +15,7 @@ class MovieService {
             "X-RapidAPI-Host": Constants.apiHost
         ]
 
-        // Fetch list of movies
-        func fetchMovies(completion: @escaping ([Movie]?) -> Void) {
+        func getMovies(completion: @escaping ([Movie]?) -> Void) {
             AF.request(baseUrlString, headers: headers).responseDecodable(of: [Movie].self) { response in
                 switch response.result {
                 case .success:
@@ -38,8 +37,7 @@ class MovieService {
             }
         }
 
-        // Fetch a single movie
-        func fetchMovie(movieID: String, completion: @escaping (Movie?) -> Void) {
+        func getMovie(movieID: String, completion: @escaping (Movie?) -> Void) {
             let singleMovieURLString = "\(baseUrlString)/\(movieID)"
             AF.request(singleMovieURLString, headers: headers).responseDecodable(of: Movie.self) { response in
                 switch response.result {
