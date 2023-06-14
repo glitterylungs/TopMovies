@@ -37,26 +37,26 @@ class MovieService {
             }
         }
 
-        func getMovie(movieID: String, completion: @escaping (Movie?) -> Void) {
-            let singleMovieURLString = "\(baseUrlString)/\(movieID)"
-            AF.request(singleMovieURLString, headers: headers).responseDecodable(of: Movie.self) { response in
-                switch response.result {
-                case .success:
-                    if let data = response.data {
-                        do {
-                            let movie = try JSONDecoder().decode(Movie.self, from: data)
-                            completion(movie)
-                        } catch {
-                            print("Error decoding movie: \(error.localizedDescription)")
-                            completion(nil)
-                        }
-                    } else {
+    func getMovie(movieID: String, completion: @escaping (Movie?) -> Void) {
+        let singleMovieURLString = "\(baseUrlString)\(movieID)"
+        AF.request(singleMovieURLString, headers: headers).responseDecodable(of: Movie.self) { response in
+            switch response.result {
+            case .success:
+                if let data = response.data {
+                    do {
+                        let movie = try JSONDecoder().decode(Movie.self, from: data)
+                        completion(movie)
+                    } catch {
+                        print("Error decoding movie: \(error.localizedDescription)")
                         completion(nil)
                     }
-                case .failure(let error):
-                    print("Error: \(error.localizedDescription)")
-                    completion(nil)
+                } else {
+                    completion(nil) // Empty data response
                 }
+            case .failure(let error):
+                print("Error: \(error.localizedDescription)")
+                completion(nil)
             }
         }
+    }
 }
