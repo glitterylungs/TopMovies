@@ -8,25 +8,34 @@
 import SwiftUI
 
 struct MovieListView: View {
-    
     @ObservedObject private var viewModel = MovieListViewModel()
     
     var body: some View {
-        VStack {
-            List(viewModel.movies, id: \.id) { movie in
-                HStack{
-                    Text(String(movie.rank))
-                    AsyncImage(url: URL(string: movie.thumbnail))
-                    Text(movie.title)
-                }
-                        
-                    }
+        NavigationView {
+            if viewModel.movies.isEmpty {
+                ProgressView("Loading...")
                     .onAppear {
                         viewModel.fetchMovies()
                     }
-                    .listStyle(.inset)
-        }
+            } else {
+                List(viewModel.movies, id: \.id) { movie in
+                    NavigationLink(destination: MovieDetailsView(movieID: movie.id)) {
+                        HStack {
+                            Text(String(movie.rank))
+                            AsyncImage(url: URL(string: movie.thumbnail))
+                            Text(movie.title)
+                        }
+                    }
+                }
+                .navigationTitle("Top 100 Movies")
+                .listStyle(.inset)
+            }
+        }.accentColor(Color("Text"))
     }
+}
+
+extension String: Identifiable {
+    public var id: String { return self }
 }
 
 struct ContentView_Previews: PreviewProvider {
