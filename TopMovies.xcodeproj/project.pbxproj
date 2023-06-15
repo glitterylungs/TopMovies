@@ -17,6 +17,10 @@
 		4F497C022A354267009644B3 /* MovieListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F497C012A354267009644B3 /* MovieListViewModel.swift */; };
 		4F497C042A3549F0009644B3 /* MovieDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F497C032A3549F0009644B3 /* MovieDetailsViewModel.swift */; };
 		4F497C062A354A00009644B3 /* MovieDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F497C052A354A00009644B3 /* MovieDetailsView.swift */; };
+		4F8F7B592A3B722600EAD9F1 /* DeviceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8F7B582A3B722600EAD9F1 /* DeviceExtension.swift */; };
+		4F8F7B5B2A3B72BC00EAD9F1 /* WindowExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8F7B5A2A3B72BC00EAD9F1 /* WindowExtension.swift */; };
+		4F8F7B5D2A3B730B00EAD9F1 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8F7B5C2A3B730B00EAD9F1 /* ViewExtension.swift */; };
+		4F8F7B602A3B73EC00EAD9F1 /* DeviceShakeViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8F7B5F2A3B73EC00EAD9F1 /* DeviceShakeViewModifier.swift */; };
 		6C5EBE15B238923FB453E0CF /* Pods_TopMovies.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0753B87AFDC8BCCC9F26A70D /* Pods_TopMovies.framework */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +37,11 @@
 		4F497C012A354267009644B3 /* MovieListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewModel.swift; sourceTree = "<group>"; };
 		4F497C032A3549F0009644B3 /* MovieDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsViewModel.swift; sourceTree = "<group>"; };
 		4F497C052A354A00009644B3 /* MovieDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsView.swift; sourceTree = "<group>"; };
+		4F8F7B582A3B722600EAD9F1 /* DeviceExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceExtension.swift; sourceTree = "<group>"; };
+		4F8F7B5A2A3B72BC00EAD9F1 /* WindowExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowExtension.swift; sourceTree = "<group>"; };
+		4F8F7B5C2A3B730B00EAD9F1 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
+		4F8F7B5F2A3B73EC00EAD9F1 /* DeviceShakeViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceShakeViewModifier.swift; sourceTree = "<group>"; };
+		4F8F7B612A3B88A900EAD9F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		5D446A28CEED7169646607C3 /* Pods-TopMovies.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TopMovies.release.xcconfig"; path = "Target Support Files/Pods-TopMovies/Pods-TopMovies.release.xcconfig"; sourceTree = "<group>"; };
 		97F35A9DD63E5C51117B6714 /* Pods-TopMovies.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TopMovies.debug.xcconfig"; path = "Target Support Files/Pods-TopMovies/Pods-TopMovies.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -79,7 +88,10 @@
 		4F0672112A312560007A3927 /* TopMovies */ = {
 			isa = PBXGroup;
 			children = (
+				4F8F7B612A3B88A900EAD9F1 /* Info.plist */,
 				4F0672122A312560007A3927 /* TopMoviesApp.swift */,
+				4F8F7B5E2A3B733900EAD9F1 /* ViewModifier */,
+				4F8F7B572A3B71F400EAD9F1 /* Extension */,
 				4FDF602F2A3279D60025D21F /* Api */,
 				4F497C002A3541FD009644B3 /* ViewModel */,
 				4FDF602E2A3279C10025D21F /* View */,
@@ -121,6 +133,24 @@
 				4F497C032A3549F0009644B3 /* MovieDetailsViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		4F8F7B572A3B71F400EAD9F1 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				4F8F7B582A3B722600EAD9F1 /* DeviceExtension.swift */,
+				4F8F7B5A2A3B72BC00EAD9F1 /* WindowExtension.swift */,
+				4F8F7B5C2A3B730B00EAD9F1 /* ViewExtension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		4F8F7B5E2A3B733900EAD9F1 /* ViewModifier */ = {
+			isa = PBXGroup;
+			children = (
+				4F8F7B5F2A3B73EC00EAD9F1 /* DeviceShakeViewModifier.swift */,
+			);
+			path = ViewModifier;
 			sourceTree = "<group>";
 		};
 		4FDF602E2A3279C10025D21F /* View */ = {
@@ -263,10 +293,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F8F7B592A3B722600EAD9F1 /* DeviceExtension.swift in Sources */,
 				4F497C042A3549F0009644B3 /* MovieDetailsViewModel.swift in Sources */,
+				4F8F7B602A3B73EC00EAD9F1 /* DeviceShakeViewModifier.swift in Sources */,
 				4F497BFF2A3537FF009644B3 /* Constants.swift in Sources */,
+				4F8F7B5B2A3B72BC00EAD9F1 /* WindowExtension.swift in Sources */,
 				4F497C062A354A00009644B3 /* MovieDetailsView.swift in Sources */,
 				4F0672152A312560007A3927 /* MovieListView.swift in Sources */,
+				4F8F7B5D2A3B730B00EAD9F1 /* ViewExtension.swift in Sources */,
 				4F0672132A312560007A3927 /* TopMoviesApp.swift in Sources */,
 				4F497BFB2A33EFE1009644B3 /* MovieService.swift in Sources */,
 				4F497BF92A33EF88009644B3 /* Movie.swift in Sources */,
@@ -403,9 +437,9 @@
 				DEVELOPMENT_TEAM = 28TZUHU66D;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TopMovies/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -433,9 +467,9 @@
 				DEVELOPMENT_TEAM = 28TZUHU66D;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TopMovies/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
