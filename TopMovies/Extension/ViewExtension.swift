@@ -1,10 +1,3 @@
-//
-//  ViewExtension.swift
-//  TopMovies
-//
-//  Created by Alicja Gruca on 15/06/2023.
-//
-
 import Foundation
 import SwiftUI
 

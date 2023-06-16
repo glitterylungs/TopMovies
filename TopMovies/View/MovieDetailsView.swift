@@ -1,10 +1,3 @@
-//
-//  MovieDetailsView.swift
-//  TopMovies
-//
-//  Created by Alicja Gruca on 11/06/2023.
-//
-
 import SwiftUI
 
 struct MovieDetailsView: View {
@@ -43,7 +36,33 @@ struct MovieDetailsView: View {
                                 }
                             }
                         }
-                        Text(movie.rating).font(.largeTitle).fontWeight(.bold).padding(.horizontal, 20)
+                        //
+                        if let rating = Float(movie.rating) {
+                            
+                            ZStack{
+                                ZStack {
+                                    Circle()
+                                        .stroke(
+                                            Color.green.opacity(0.5),
+                                            lineWidth: 10
+                                        )
+                                    Circle()
+                                    
+                                  
+                                        .trim(from: 0, to: CGFloat(rating/10))
+                                        .stroke(
+                                            Color("BackButtonColor"),
+                                            style: StrokeStyle(
+                                                lineWidth: 10,
+                                                lineCap: .round
+                                            )
+                                        )
+                                        .rotationEffect(.degrees(-90))
+                                        Text(movie.rating).font(.callout).fontWeight(.bold).padding(.horizontal, 20)
+                                }.frame(width: 70)
+                            }
+                            
+                        }
                     }
                     Spacer(minLength: 30)
                     VStack(alignment: .leading){

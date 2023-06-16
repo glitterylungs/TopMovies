@@ -1,17 +1,11 @@
-//
-//  ContentView.swift
-//  TopMovies
-//
-//  Created by Alicja Gruca on 07/06/2023.
-//
-
 import SwiftUI
 
 struct MovieListView: View {
     @ObservedObject private var viewModel = MovieListViewModel()
     
     @State private var randomMovieID: String? = nil
-        @State private var shouldNavigate = false
+    @State private var shouldNavigate = false
+    @State private var searchText = ""
     
     var body: some View {
         NavigationView {
@@ -21,7 +15,7 @@ struct MovieListView: View {
                         viewModel.fetchMovies()
                     }
             } else {
-                List(viewModel.movies, id: \.id) { movie in
+                List(viewModel.filteredMovies(for: searchText), id: \.id) { movie in
                     NavigationLink(destination: MovieDetailsView(movieID: movie.id)) {
                         HStack {
                             Text(String(movie.rank)).font(.headline).fontWeight(.medium)
@@ -51,9 +45,10 @@ struct MovieListView: View {
                 }
                 .navigationTitle("Top 100 Movies")
                 .listStyle(.inset)
-
+                
             }
-        }.accentColor(Color("Text"))
+        }.accentColor(Color("BackButtonColor"))
+            .searchable(text: $searchText)
     }
 }
 

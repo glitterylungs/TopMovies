@@ -1,10 +1,3 @@
-//
-//  MovieListViewModel.swift
-//  TopMovies
-//
-//  Created by Alicja Gruca on 11/06/2023.
-//
-
 import Foundation
 import Alamofire
 
@@ -17,8 +10,16 @@ class MovieListViewModel: ObservableObject {
     func fetchMovies() {
         movieService.getMovies { [weak self] movies in
             DispatchQueue.main.async {
-                self?.movies = movies ?? []
+                self?.movies = movies?.shuffled() ?? []
             }
         }
     }
+    
+    func filteredMovies(for searchText: String) -> [Movie] {
+        guard !searchText.isEmpty else {return movies}
+        return movies.filter { movie in
+            movie.title.localizedCaseInsensitiveContains(searchText)
+        }
+    }
+
 }

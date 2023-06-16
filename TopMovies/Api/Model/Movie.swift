@@ -1,10 +1,3 @@
-//
-//  Movie.swift
-//  TopMovies
-//
-//  Created by Alicja Gruca on 10/06/2023.
-//
-
 import Foundation
 
 

@@ -1,10 +1,3 @@
-//
-//  MovieDetailsViewModel.swift
-//  TopMovies
-//
-//  Created by Alicja Gruca on 11/06/2023.
-//
-
 import Foundation
 
 class MovieDetailsViewModel: ObservableObject {
