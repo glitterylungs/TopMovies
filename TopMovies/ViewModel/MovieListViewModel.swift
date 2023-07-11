@@ -17,7 +17,7 @@ class MovieListViewModel: ObservableObject {
     func fetchMovies() {
         movieService.getMovies { [weak self] movies in
             DispatchQueue.main.async {
-                self?.movies = movies?.reversed() ?? []
+                self?.movies = movies ?? []
             }
         }
     }
