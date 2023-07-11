@@ -11,7 +11,7 @@ struct MovieListView: View {
     @ObservedObject private var viewModel = MovieListViewModel()
     
     @State private var randomMovieID: String? = nil
-        @State private var shouldNavigate = false
+    @State private var shouldNavigate = false
     
     var body: some View {
         NavigationView {
@@ -51,7 +51,7 @@ struct MovieListView: View {
                 }
                 .navigationTitle("Top 100 Movies")
                 .listStyle(.inset)
-
+                
             }
         }.accentColor(Color("Text"))
     }

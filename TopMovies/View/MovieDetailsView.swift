@@ -12,19 +12,31 @@ struct MovieDetailsView: View {
     
     @ObservedObject private var viewModel = MovieDetailsViewModel()
     
+    @State private var isShowingTrailer = false
+    
     var body: some View {
         ScrollView {
             VStack {
                 if let movie = viewModel.movie {
-                    AsyncImage(url: URL(string: movie.image)) { image in
-                        image
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .clipShape(RoundedRectangle(cornerRadius: 10))
-                    } placeholder: {
-                        ProgressView()
+                    Button(action: { isShowingTrailer = true }) {
+                        ZStack {
+                            AsyncImage(url: URL(string: movie.image)) { image in
+                                image
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                            } placeholder: {
+                                ProgressView()
+                            }
+                            .frame(width: 250)
+                            
+                            Image(systemName: "play.circle").font(.system(size: 80)).opacity(0.5)
+                        }
                     }
-                    .frame(width: 250)
+                    .sheet(isPresented: $isShowingTrailer) {
+                        MovieTrailerView(movieName: movie.title, trailerURL: movie.trailer)
+                            .presentationDetents([.fraction(0.6)])
+                    }
                     Text(movie.title)
                         .font(.largeTitle)
                         .fontWeight(.medium)
@@ -38,7 +50,7 @@ struct MovieDetailsView: View {
                                 ForEach(movie.genre, id: \.self) { genre in
                                     Text(genre)
                                         .padding(10)
-                                        .background(.gray)
+                                        .background(Color("GenreColor"))
                                         .cornerRadius(20)
                                 }
                             }
